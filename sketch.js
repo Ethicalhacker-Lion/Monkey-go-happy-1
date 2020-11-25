@@ -1,20 +1,20 @@
-var monkey;
-var monkey_running; 
-var monkeyCollide;
-var ground; 
-var invisiGround;
-var groundImg;
-var banana;
-var bananaImage;
-var obstacle;
-var obstacleImage;
-var FoodGroup;
-var obstacleGroup;
-var score = 0;
-var bananaScore = 0; 
-var PLAY = 0;
-var END = 1;
-var gameState = PLAY;
+  var monkey;
+  var monkey_running; 
+  var monkeyCollide;
+  var ground; 
+  var invisiGround;
+  var groundImg;
+  var banana;
+  var bananaImage;
+  var obstacle;
+  var obstacleImage;
+  var FoodGroup;
+  var obstacleGroup;
+  var score = 0;
+  var bananaScore = 0; 
+  var PLAY = 0;
+  var END = 1;
+  var gameState = PLAY;
 
 function preload(){
   monkey_running = loadAnimation("sprite_0.png","sprite_1.png","sprite_2.png","sprite_3.png","sprite_4.png","sprite_5.png","sprite_6.png","sprite_7.png","sprite_8.png")
@@ -55,8 +55,8 @@ function setup(){
 function draw(){
   background("skyblue");
   fill("black");
-  text("SURVIVAL TIME: "+score, 470, 20);
-  text("BANANAS COLLECTED: "+bananaScore,300,20);
+  text("TIME SURVIVAL = "+score, 470, 20);
+  text("COLLECTED BANANAS = "+bananaScore,300,20);
   
   if (gameState === PLAY){
     obstacles();
@@ -66,10 +66,10 @@ function draw(){
     ground.velocityX = -(4+score*1.5/100);
   
     if(keyDown("space")&&monkey.y >= 235) {
-      monkey.velocityY = -13; 
+      monkey.velocityY = -18; 
     }
   
-    monkey.velocityY = monkey.velocityY + 0.8
+    monkey.velocityY = monkey.velocityY + 0.9
   
     if (ground.x < 0){
       ground.x = ground.width/2;
@@ -115,11 +115,7 @@ function draw(){
       gameState = PLAY; 
     }
   }
-  
-  
-  
   drawSprites(); 
-  
   monkey.collide(invisiGround);
 }
 
@@ -132,13 +128,8 @@ function bananas(){
     banana.velocityX =-(4+score*1.5/100);           
     banana.lifetime = 220;
     bananaGroup.add(banana);
-    bananaGroup.add(banana);
-
-    
-  }
-  
-
-  
+    bananaGroup.add(banana); 
+  } 
 }
 
 function obstacles(){
@@ -152,13 +143,5 @@ function obstacles(){
     obstacle.lifetime = 220;
     obstacleGroup.add(obstacle);
     
-  }
-  
-  
+  } 
 }
-
-
-
-
-
-
